@@ -1,55 +1,120 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
-import { IoIosArrowDown } from "react-icons/io";
-import { useState } from 'react';
+import { useState } from "react";
+import { IoMdClose } from "react-icons/io";
+import { Link } from "react-router-dom";
+import { MdOutlineMenu } from "react-icons/md";
 
 const Navbar2 = () => {
+  const navLinks = [
+    {
+      title: "Home",
+      link: "/",
+    },
+    {
+      title: "Pages",
+      link: "/pages",
+    },
+    {
+      title: "Products",
+      link: "/Products",
+    },
+    {
+      title: "Home",
+      link: "/home",
+    },
+    {
+      title: "Blog",
+      link: "/blog",
+    },
+    {
+      title: "Shop",
+      link: "/shop",
+    },
+    {
+      title: "Contact",
+      link: "/contact",
+    },
+  ];
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
   return (
-    <nav className="bg-white  w-full flex justify-center items-center py-5 text-base">
-      <div className=" flex justify-between container items-center gap-5">
-        <div className="text-black font-medium text-3xl font-['Josefin_Sans']">
-          Hekto
-        </div>
-        <div
-          className={`md:flex gap-8 font-['lato'] cursor-pointer ${
-            isMenuOpen ? "" : "hidden"
-          }`}
-        >
-          <div className="hover:text-[#fc62a4] flex items-center">
-            Home <IoIosArrowDown />
+    <nav className="bg-white w-full flex justify-center items-center py-5 text-base ">
+      <div className="container gap-4 md:gap-8 flex justify-between items-center">
+
+
+        <div><div className="text-black text-2xl font-medium md:text-3xl font-['Josefin_Sans']">
+          <Link to="/">Hekto</Link>
+        </div></div>
+
+
+
+        <div>        <div className="hidden lg:block">
+          <div className=" font-['lato'] cursor-pointer md:flex gap-8 m-0 mx-auto">
+            {navLinks.map((navLink, index) => (
+              <Link
+                key={index}
+                className="hover:text-[#fc62a4] flex items-center "
+                to={navLink.link}
+              >
+                {navLink.title}
+              </Link>
+            ))}
           </div>
-          <div className="hover:text-[#fc62a4]">Pages</div>
-          <div className="hover:text-[#fc62a4]">Products</div>
-          <div className="hover:text-[#fc62a4]">Blog</div>
-          <div className="hover:text-[#fc62a4]">Shop</div>
-          <div className="hover:text-[#fc62a4]">Contact</div>
-        </div>
-        <div className="md:hidden">
-          <a
-            className="text-2xl hover:text-gray-300 transition-colors duration-300"
-            href="#"
+        </div></div>
+
+
+
+
+        <div>        <div className="flex items-center md:ml-auto">
+          {/* Adjust margin as needed */}
+          <input
+            className="border-[#e7e6ef] border-solid container border-2 md:py-[5px]"
+            type="text"
+          />
+          <div className="md:px-4 md:py-[11px] px-2 py-[6px] bg-[#fb2e86] cursor-pointer hover:bg-[#f14dfa] transition-colors duration-300">
+            <FaSearch />
+          </div>
+        </div></div>
+        {/* Logo */}
+        
+        {/* Search bar (always visible) */}
+
+
+        <div className="lg:hidden ">
+          <span
+            className={`text-3xl hover:text-gray-300 transition-colors duration-300 transform ${
+              isMenuOpen ? "rotate-90" : ""
+            }`}
             onClick={(e) => {
               e.preventDefault();
               toggleMenu();
             }}
           >
-            &#8801;
-          </a>
+            {isMenuOpen ? <IoMdClose /> : <MdOutlineMenu />}
+          </span>
         </div>
-        <div className=" flex items-center ">
-          <input
-            className="border-[#e7e6ef] border-solid border-2 py-[5px]"
-            type="text"
-          />{" "}
-          <div className="px-4 py-[11px] bg-[#fb2e86]">
-            <FaSearch />
+
+        {isMenuOpen ? (
+          <div className="lg:hidden ">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {navLinks.map((navLink, index) => (
+                <Link
+                  key={index}
+                  className="hover:text-[#fc62a4] text-black block px-3 py-2 rounded-md text-base font-medium"
+                  to={navLink.link}
+                >
+                  {navLink.title}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </nav>
   );
