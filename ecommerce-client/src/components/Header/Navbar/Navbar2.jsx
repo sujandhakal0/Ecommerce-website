@@ -46,45 +46,45 @@ const Navbar2 = () => {
   return (
     <nav className="bg-white w-full flex justify-center items-center py-5 text-base ">
       <div className="container gap-4 md:gap-8 flex justify-between items-center">
-
-
-        <div><div className="text-black text-2xl font-medium md:text-3xl font-['Josefin_Sans']">
-          <Link to="/">Hekto</Link>
-        </div></div>
-
-
-
-        <div>        <div className="hidden lg:block">
-          <div className=" font-['lato'] cursor-pointer md:flex gap-8 m-0 mx-auto">
-            {navLinks.map((navLink, index) => (
-              <Link
-                key={index}
-                className="hover:text-[#fc62a4] flex items-center "
-                to={navLink.link}
-              >
-                {navLink.title}
-              </Link>
-            ))}
+        <div>
+          <div className="text-black text-2xl font-medium md:text-3xl font-['Josefin_Sans']">
+            <Link to="/">Hekto</Link>
           </div>
-        </div></div>
+        </div>
 
+        <div>
 
-
-
-        <div>        <div className="flex items-center md:ml-auto">
-          {/* Adjust margin as needed */}
-          <input
-            className="border-[#e7e6ef] border-solid container border-2 md:py-[5px]"
-            type="text"
-          />
-          <div className="md:px-4 md:py-[11px] px-2 py-[6px] bg-[#fb2e86] cursor-pointer hover:bg-[#f14dfa] transition-colors duration-300">
-            <FaSearch />
+          <div className="hidden lg:block">
+            <div className=" font-['lato'] cursor-pointer md:flex gap-8 m-0 mx-auto">
+              {navLinks.map((navLink, index) => (
+                <Link
+                  key={index}
+                  className="hover:text-[#fc62a4] flex items-center "
+                  to={navLink.link}
+                >
+                  {navLink.title}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div></div>
+        </div>
+
+        <div>
+
+          <div className="flex items-center md:ml-auto">
+            {/* Adjust margin as needed */}
+            <input
+              className="border-[#e7e6ef] border-solid container border-2 md:py-[5px] "
+              type="text"
+            />
+            <div className="md:px-4 md:py-[11px] px-2 py-[6px] bg-[#fb2e86] cursor-pointer hover:bg-[#f14dfa] transition-colors duration-300">
+              <FaSearch />
+            </div>
+          </div>
+        </div>
         {/* Logo */}
-        
-        {/* Search bar (always visible) */}
 
+        {/* Search bar (always visible) */}
 
         <div className="lg:hidden ">
           <span

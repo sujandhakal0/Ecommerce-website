@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 .track{
     border: 1px solid red !important;
 }
@@ -24,12 +26,12 @@
         padding-right: 4rem;
     }
 }
-@media (min-width:1536px) {
+/* @media (min-width:1536px) {
     .container{
-        padding-left: 6rem;
-        padding-right: 6rem;
+        padding-left: 5rem;
+        padding-right: 5rem;
     }
-}
+} */
 
 
   

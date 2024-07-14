@@ -1,5 +1,8 @@
 import React from "react";
 import { HiOutlineMinusSmall } from "react-icons/hi2";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { FaSearchPlus } from "react-icons/fa";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -139,18 +142,24 @@ const TopProducts = () => {
     },
   ];
   return (
-    <div className="w-full flex justify-center">
-      <div className="slider-container container xl:pt-[160px] lg:pb-[126px] pt-[96px] sm:pb-[96px]">
+     <div className="w-full flex justify-center">
+      <div className="slider-container container xl:pt-[160px] lg:pb-[126px] pt-[96px] sm:pb-[96px] ">
         <Slider {...settings}>
           {productList.map((list, index) => (
-            <div className=" !flex !justify-center">
+            <div className=" !flex !justify-center  ">
               <div
                 key={index}
-                className="!w-[270px] h-[361px] shadow-xl shadow-slate-100 mb-[1px] hover:bg-[#2f1ac4] group cursor-pointer"
+                className="!w-[270px]  h-[361px] shadow-xl shadow-slate-100 mb-[1px] hover:bg-[#2f1ac4] group cursor-pointer hover:translate-y-[-10px] transition-transform duration-300"
               >
-                <div className="">
-                  <div className="w-[270px] h-[236px] flex justify-center items-center bg-[#f6f7fb]">
-                    {list.image}
+                <div className="h-full flex flex-col justify-between group-hover:translate-y-[-10px] transition-transform duration-300 relative">
+                  <div className="w-[275px] h-[240px] flex justify-center items-center bg-[#f6f7fb]">
+                    <div className="hidden  hover:flex absolute top-0 left-2 gap-2 mt-8">
+                      {/* <MdOutlineShoppingCart className="w-[19px]  h-[19px] text-[#1697f7]" /> <IoMdHeartEmpty className="w-[19px]  h-[19px] text-[#1697f7]" /> <FaSearchPlus className="w-[19px]  h-[19px] text-[#1697f7] text-[12px] " /> */}
+                    </div>
+                    <div className="mb-4 ">{list.image}</div>
+                    {/* <div className="hidden hover:block absolute bottom-[130px] m-2"><button className="py-1 px-2 rounded bg-[#08d15f]  text-white">{list.button}</button></div> */}
+                    
+                    
                   </div>
                   <div className="p-4 flex flex-col items-center gap-2 group-hover:text-[#fff]">
                     <div className="text-center text-[#FB2E86] font-[Lato] font-bold text-[18px] group-hover:text-[#fff]">
