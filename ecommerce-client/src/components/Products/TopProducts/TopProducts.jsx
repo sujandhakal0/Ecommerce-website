@@ -146,10 +146,10 @@ const TopProducts = () => {
       <div className="slider-container container xl:pt-[160px] lg:pb-[126px] pt-[96px] sm:pb-[96px] ">
         <Slider {...settings}>
           {productList.map((list, index) => (
-            <div className=" !flex !justify-center  ">
+            <div key={index} className=" !flex !justify-center  ">
               <div
                 key={index}
-                className="!w-[270px]  h-[361px] shadow-xl shadow-slate-100 mb-[1px] hover:bg-[#2f1ac4] group cursor-pointer hover:translate-y-[-10px] transition-transform duration-300"
+                className="!w-[270px]  h-[361px] shadow-xl shadow-slate-100 mb-[1px] hover:bg-primary-dark1 group cursor-pointer hover:translate-y-[-10px] transition-transform duration-300"
               >
                 <div className="h-full flex flex-col justify-between group-hover:translate-y-[-10px] transition-transform duration-300 relative">
                   <div className="w-[275px] h-[240px] flex justify-center items-center bg-[#f6f7fb]">
@@ -162,14 +162,14 @@ const TopProducts = () => {
                     
                   </div>
                   <div className="p-4 flex flex-col items-center gap-2 group-hover:text-[#fff]">
-                    <div className="text-center text-[#FB2E86] font-[Lato] font-bold text-[18px] group-hover:text-[#fff]">
+                    <div className="text-center text-secondary font-[Lato] font-bold text-[18px] group-hover:text-[#fff]">
                       {list.title}
                     </div>
                     <div>{list.colors}</div>
-                    <div className="text-[#151875] font-[Josefin Sans] text-[14px] group-hover:text-[#fff]">
+                    <div className="text-primary-dark font-[Josefin Sans] text-[14px] group-hover:text-[#fff]">
                       Code - {list.Code}
                     </div>
-                    <div className="text-[#151875] font-[Lato] text-[14px] group-hover:text-[#fff]">
+                    <div className="text-primary-dark font-[Lato] text-[14px] group-hover:text-[#fff]">
                       {list.price}
                     </div>
                   </div>

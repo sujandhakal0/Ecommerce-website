@@ -14,12 +14,12 @@ const ContactUs = () => {
       {/* ............................ */}
       <div className="w-full  flex justify-center bg-[#f6f5ff] py-[98px]">
         <div className="container  flex flex-col gap-2">
-          <div className="font-['Josefin_Sans'] font-bold text-[36px] text-[#101750]">
+          <div className="font-['Josefin_Sans'] font-bold text-[36px] text-primary-dark">
             Contact Us
           </div>
           <div className="text-base ">
             Home.Pages.
-            <span className="text-[#FB2E86] font-[500]">Contact Us</span>
+            <span className="text-secondary font-[500]">Contact Us</span>
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@ const ContactUs = () => {
         <section className="flex flex-col gap-8  lg:flex-row 2xl:gap-48 lg:mb-[80px] 2xl:mb-[120px]">
           <div className="flex flex-col gap-6   xl:w-[550px]">
             <div className="">
-              <p className="font-['Josefin_Sans'] font-bold text-[36px] text-[#101750]">
+              <p className="font-['Josefin_Sans'] font-bold text-[36px] text-primary-dark">
                 Information About us
               </p>
 
@@ -49,7 +49,7 @@ const ContactUs = () => {
           </div>
 
           <div className="text-sm sm:text-base mt-4">
-            <div className="font-['Josefin_Sans'] font-bold text-[36px] text-[#101750] ">
+            <div className="font-['Josefin_Sans'] font-bold text-[36px] text-primary-dark ">
               Contact Way
             </div>
 
@@ -73,7 +73,7 @@ const ContactUs = () => {
 
               <div className="flex flex-col justify-between">
                 <div className="font-['lato'] text-[#8a8fb9] flex items-center gap-2  sm:mt-2">
-                  <FaCircle className="text-[#fb2e86] sm:text-2xl lg:text-3xl xl:text-4xl" />
+                  <FaCircle className="text-secondary sm:text-2xl lg:text-3xl xl:text-4xl" />
                   <div>
                     <p>Support Forum</p>
                     <p>For over 24hr</p>
@@ -94,7 +94,7 @@ const ContactUs = () => {
         <section className="flex justify-between xl:gap-11">
           <div className="flex flex-col gap-6  mt-4 lg:w-[475px] xl:w-[534px] xl:gap-11">
             <div className="xl:flex xl:flex-col xl:gap-4">
-              <p className="font-['Josefin_Sans'] font-bold text-[36px] text-[#101750]">
+              <p className="font-['Josefin_Sans'] font-bold text-[36px] text-primary-dark">
                 Get In Touch
               </p>
 
@@ -130,7 +130,7 @@ const ContactUs = () => {
                   type="text"
                   placeholder="Type Your Messege*"
                 />
-                <button className="bg-[#FB2E86] hover:bg-[#f14dfa] font-['Josefin_Sans'] ransition-colors duration-300 p-2.5 sm:p-3 sm:py-2 sm:px-4  md:py-4 md:px-9  rounded text-white font-bold text-sm lg:w-[157px]">
+                <button className="bg-secondary hover:bg-[#f14dfa] font-['Josefin_Sans'] ransition-colors duration-300 p-2.5 sm:p-3 sm:py-2 sm:px-4  md:py-4 md:px-9  rounded text-white font-bold text-sm lg:w-[157px]">
                   Send Mail
                 </button>
               </form>

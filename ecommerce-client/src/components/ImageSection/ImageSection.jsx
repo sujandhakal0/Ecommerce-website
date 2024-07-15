@@ -36,7 +36,7 @@ const ImageSection = () => {
 
             <div className="md:flex md:flex-col md:gap-4 flex flex-col gap-2 sm:gap-6">
               <div className="flex flex-col sm:gap-3 gap-1">
-                <div className=" text-[#FB2E86] font-[Lato] font-bold text-[9px] md:text-base">
+                <div className=" text-secondary font-[Lato] font-bold text-[9px] md:text-base">
                   Best Furniture For Your Castle....
                 </div>
                 <div className="font-['Josefin_Sans'] font-bold 2xl:text-[53px] 2xl:leading-[69px]  md:text-3xl sm:text-2xl text-xl leading-5">
@@ -49,7 +49,7 @@ const ImageSection = () => {
               </div>
 
               <div>
-                <button className="bg-[#FB2E86] hover:bg-[#f14dfa] ransition-colors duration-300 py-1 px-2 sm:py-2 sm:px-4  md:py-4 md:px-9  rounded text-white font-bold text-sm">
+                <button className="bg-secondary hover:bg-[#f14dfa] ransition-colors duration-300 py-1 px-2 sm:py-2 sm:px-4  md:py-4 md:px-9  rounded text-white font-bold text-sm">
                   Shop Now
                 </button>
               </div>

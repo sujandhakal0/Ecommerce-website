@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div>
-      <nav className="bg-[#7E33E0] flex justify-center text-white font-['Josefin_Sans'] text-sm md:text-base">
+      <nav className="bg-primary flex justify-center text-white font-['Josefin_Sans'] text-sm md:text-base">
         <div className="  flex gap-4 justify-center md:justify-between py-4 container flex-wrap md:flex">
           <div className="flex md:gap-[48px] gap-[16px]">
             <div className="flex gap-[10px] items-center ">

@@ -44,7 +44,7 @@ const Footer = () => {
       <div className="container  grid grid-cols-2 lg:grid-cols-5  border-gray-600 gap-4 = py-8 md:py-11 lg:py-[95px]">
         <div className="col-span-2 pt-2 lg:pt-2 flex flex-col gap-3 lg:gap-8">
           <div>
-            <div className="text-black text-2xl font-bold lg:text-3xl font-['Josefin_Sans'] ">
+            <div className="text-primary-darker text-2xl font-bold lg:text-[34px] font-['Josefin_Sans'] ">
               <Link to="/">Hekto</Link>
             </div>
           </div>
@@ -57,7 +57,7 @@ const Footer = () => {
                 placeholder="Enter Email Address"
               />
 
-              <button className=" p-2 mb-4 text-white bg-[#fb2e86] rounded sm:px-4 lg:w-[135px] hover:bg-[#f14dfa] ">
+              <button className=" p-2 mb-4 text-white bg-secondary rounded sm:px-4 lg:w-[135px] hover:bg-[#f14dfa] ">
                 <div className="font-['Josefin_Sans']">Sign Up </div>
               </button>
             </form>

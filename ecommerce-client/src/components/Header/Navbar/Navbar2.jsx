@@ -47,7 +47,7 @@ const Navbar2 = () => {
     <nav className="bg-white w-full flex justify-center items-center py-5 text-base ">
       <div className="container gap-4 md:gap-8 flex justify-between items-center">
         <div>
-          <div className="text-black text-2xl font-medium md:text-3xl font-['Josefin_Sans']">
+          <div className="text-primary-darker text-2xl font-medium md:text-[34px] font-['Josefin_Sans']">
             <Link to="/">Hekto</Link>
           </div>
         </div>
@@ -59,7 +59,7 @@ const Navbar2 = () => {
               {navLinks.map((navLink, index) => (
                 <Link
                   key={index}
-                  className="hover:text-[#fc62a4] flex items-center "
+                  className="hover:text-secondary flex items-center "
                   to={navLink.link}
                 >
                   {navLink.title}
@@ -77,7 +77,7 @@ const Navbar2 = () => {
               className="border-[#e7e6ef] border-solid container border-2 md:py-[5px] "
               type="text"
             />
-            <div className="md:px-4 md:py-[11px] px-2 py-[6px] bg-[#fb2e86] cursor-pointer hover:bg-[#f14dfa] transition-colors duration-300">
+            <div className="md:px-4 md:py-[11px] px-2 py-[6px] bg-secondary cursor-pointer hover:bg-[#f14dfa] transition-colors duration-300">
               <FaSearch />
             </div>
           </div>
