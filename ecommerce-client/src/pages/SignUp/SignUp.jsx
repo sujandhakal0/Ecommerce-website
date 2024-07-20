@@ -13,59 +13,64 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
 
-  const IsValidate = () => {
-    let isproceed = true;
-    let errormessage = "Please enter the value in ";
-
-    if (name === null || name === "") {
-      isproceed = false;
-      errormessage += "Full name";
-    }
-
-    if (email === null || email === "") {
-      isproceed = false;
-      errormessage += "Email";
-    }
-    if (password === null || password === "") {
-      isproceed = false;
-      errormessage += "Password";
-    }
-
-    if (!isproceed) {
-      toast.warning(errormessage);
-    } else {
-      if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
-      } else {
-        isproceed = false;
-        toast.warning("Please enter the valid email");
-      }
-    }
-    return isproceed;
-  };
+  const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    const validationErrors = validate();
+    // Validate form data before submitting
 
-    const regObj = { name, email, password };
-    if (IsValidate()) {
-      try {
-        const response = await axios.post(
-          "http://localhost:8000/user",
-          regObj,
-          {
-            headers: { "Content-Type": "application/json" },
-          }
-        );
-        toast.success("Sign up successful!");
-        // console.log(response.data);
-        navigate("/login");
-      } catch (error) {
-        toast.error(`Sign up failed. Please try again. (${error.message})`);
-        // console.error(error);
-      }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors); // Update errors state with validation results
+      return; // Prevent form submission if errors exist
     }
+
+    try {
+      axios.post("https://ecommerce-sagartmg2.vercel.app/api/users/signup", {
+        name,
+        email,
+        password,
+        role,
+      });
+
+      // Handle successful signup
+      toast.success("Sign up successful!");
+      navigate("/login");
+    } catch (error) {
+      // Handle signup errors
+      toast.error(`Sign up failed. Please try again. (${error.message})`);
+    }
+  };
+
+  const validate = () => {
+    const validationErrors = {};
+
+    if (!name) {
+      validationErrors.name = "Please enter your full name.";
+    }
+
+    if (!email) {
+      validationErrors.email = "Please enter your email address.";
+    } else if (
+      !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+        email
+      )
+    ) {
+      validationErrors.email = "Please enter a valid email address.";
+    }
+
+    if (!password) {
+      validationErrors.password = "Please enter your password.";
+    }
+
+    if (!role) {
+      validationErrors.role = "Please select your role.";
+    }
+
+    return validationErrors;
   };
 
   return (
@@ -101,33 +106,49 @@ const SignUp = () => {
           >
             <div className="mb-4">
               <input
+                name="name"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
                 type="text"
                 className="border-[#e7e6ef] border-solid border-2 w-[366px] h-[44px] px-4 rounded"
                 placeholder="Name"
-                // required
+                onChange={(e) => setName(e.target.value)}
               />
+              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>} {/* Display error message below input */}
             </div>
             <div className="mb-4">
               <input
+                name="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 type="text"
                 className="border-[#e7e6ef] border-solid border-2 w-[366px] h-[44px] px-4 rounded"
                 placeholder="Email Address"
-                // required
+                onChange={(e) => setEmail(e.target.value)}
               />
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
             </div>
             <div className="mb-4">
               <input
+                name="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 className="border-[#e7e6ef] border-solid border-2 w-[366px] h-[44px] px-4 rounded"
                 placeholder="Password"
-                // required
+                onChange={(e) => setPassword(e.target.value)}
               />
+              {errors.password && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+            </div>
+            <div className="mb-4">
+              <select
+                name="role"
+                value={role}
+                className="border-[#e7e6ef] border-solid border-2 w-[366px] h-[44px] px-4 rounded"
+                onChange={(e) => setRole(e.target.value)}
+              >
+                <option value="">Select your role</option>
+                <option value="buyer">Buyer</option>
+                <option value="seller">Seller</option>
+              </select>
+              {errors.role && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
             </div>
             <div className="mb-4">
               <button
@@ -138,7 +159,7 @@ const SignUp = () => {
               </button>
             </div>
             <div className="mb-4">
-              <p className="font-[lato] text-[17px] text-[#9ea3bb]">
+              <p className="font-[lato] text-[17px] text-[#9ea3bb] hover:underline">
                 <Link to="/login">Already have an account? Sign in here</Link>
               </p>
             </div>

@@ -9,7 +9,6 @@ import { FaCircle } from "react-icons/fa";
 const ContactUs = () => {
   return (
     <div>
-      <Header />
 
       {/* ............................ */}
       <div className="w-full  flex justify-center bg-[#f6f5ff] py-[98px]">
@@ -142,7 +141,7 @@ const ContactUs = () => {
         </section>
       </div>
       </div>
-      <Footer />
+
     </div>
   );
 };

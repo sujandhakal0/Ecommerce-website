@@ -1,45 +1,43 @@
-import React from "react";
-import Header from "../../components/Header/Header";
+import React, { useEffect } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 import loginImage from "./images/loginImage.png";
-import Footer from "../../components/Footer/Footer";
+
 import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { setReduxUser } from "../../redux/slices/userSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const proceedLogin = async (e) => {
     e.preventDefault();
-  
+
     if (validate()) {
       try {
         const loginData = {
-          email: email, // Replace with your username field
-          password: password, // Replace with your password field
+          email,
+          password,
         };
-  
-        const response = await axios.post("https://localhost:44308/User/Authenticate", loginData, {
-          headers: { 'Content-Type': 'application/json' },
-        });
-  
-        // Handle successful login based on server response (assuming a `success` flag)
-        if (response.data.success) {
-          toast.success('Login successful');
-          sessionStorage.setItem('email', email);
-          sessionStorage.setItem('jwtToken', response.data.jwtToken); // Assuming the server sends a JWT token
-          navigate('/');
-        } else {
-          toast.error(response.data.message || 'Login failed, invalid credentials');
-        }
-  
+
+        const response = await axios.post(
+          "https://ecommerce-sagartmg2.vercel.app/api/users/login",
+          loginData
+        );
+
+        toast.success("Login successful!");
+        navigate("/");
+
+        dispatch(setReduxUser(response.data.user));
+        localStorage.setItem("user", JSON.stringify(response.data.user));
       } catch (error) {
         toast.error(`Login failed due to: ${error.message}`);
-        console.error(error);
       }
     }
   };
@@ -48,17 +46,16 @@ const Login = () => {
     let results = true;
     if (email === "" || email === null) {
       toast.warning("Please enter Email Address");
-      results = false; // Update after toast notification
+      results = false;
     }
     if (password === "" || password === null) {
       toast.warning("Please enter your Password");
-      results = false; // Update after toast notification
+      results = false;
     }
     return results;
   };
   return (
     <div>
-      <Header />
       <div className="w-full  flex justify-center bg-[#f6f5ff] py-[98px]">
         <div className="container  flex flex-col gap-2">
           <div className="font-['Josefin_Sans'] font-bold text-[36px] text-[#101750]">
@@ -122,7 +119,7 @@ const Login = () => {
               </button>
             </div>
             <div className="mb-4">
-              <p className="font-[lato] text-[17px] text-[#9ea3bb]">
+              <p className="font-[lato] text-[17px] text-[#9ea3bb] hover:underline">
                 <Link to="/signup">Don't have an Account? Create account</Link>
               </p>
             </div>
@@ -133,7 +130,6 @@ const Login = () => {
           <img src={loginImage} alt="" />
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

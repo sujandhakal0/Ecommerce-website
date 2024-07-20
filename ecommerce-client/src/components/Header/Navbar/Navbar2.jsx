@@ -2,7 +2,7 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { MdOutlineMenu } from "react-icons/md";
 
 const Navbar2 = () => {
@@ -20,10 +20,6 @@ const Navbar2 = () => {
       link: "/Products",
     },
     {
-      title: "Home",
-      link: "/home",
-    },
-    {
       title: "Blog",
       link: "/blog",
     },
@@ -36,6 +32,9 @@ const Navbar2 = () => {
       link: "/contact",
     },
   ];
+
+  const [menu, setMenu] = useState("Home");
+  const location = useLocation();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -53,14 +52,16 @@ const Navbar2 = () => {
         </div>
 
         <div>
-
           <div className="hidden lg:block">
             <div className=" font-['lato'] cursor-pointer md:flex gap-8 m-0 mx-auto">
               {navLinks.map((navLink, index) => (
                 <Link
                   key={index}
-                  className="hover:text-secondary flex items-center "
+                  className={`hover:text-secondary flex items-center ${location.pathname === navLink.link ? 'text-secondary' : ''}`}
                   to={navLink.link}
+                  onClick={() => {
+                    setMenu(`${navLink.title}`);
+                  }}
                 >
                   {navLink.title}
                 </Link>
@@ -70,7 +71,6 @@ const Navbar2 = () => {
         </div>
 
         <div>
-
           <div className="flex items-center md:ml-auto">
             {/* Adjust margin as needed */}
             <input
@@ -106,7 +106,10 @@ const Navbar2 = () => {
               {navLinks.map((navLink, index) => (
                 <Link
                   key={index}
-                  className="hover:text-[#fc62a4] text-black block px-3 py-2 rounded-md text-base font-medium"
+                  className={`hover:text-secondary flex items-center ${location.pathname === navLink.link ? 'text-secondary' : ''}`}
+                  onClick={() => {
+                    setMenu(`${navLink.title}`);
+                  }}
                   to={navLink.link}
                 >
                   {navLink.title}
