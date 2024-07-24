@@ -9,6 +9,7 @@ import RootLayout from "./components/RootLayout";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { useDispatch, useSelector } from "react-redux";
 import { setReduxUser } from "./redux/slices/userSlice";
+import Cart from "./pages/Cart/Cart";
 
 
 function App() {
@@ -52,6 +53,14 @@ function App() {
           element: (
             <>
               <ContactUs />
+            </>
+          ),
+        },
+        {
+          path: "/cart",
+          element: (
+            <>
+              <Cart />
             </>
           ),
         },

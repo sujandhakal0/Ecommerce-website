@@ -9,8 +9,16 @@ import img from "./images/img.png";
 import img1 from "./images/img1.png";
 import img2 from "./images/img2.png";
 import img3 from "./images/img3.png";
+import { useDispatch } from "react-redux";
+import { addCartItems } from "../../../redux/slices/cartSlice";
 
 const TopProducts = () => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (product) => {
+    dispatch(addCartItems(product))
+     
+  };
   var settings = {
     dots: true,
     infinite: true,
@@ -118,23 +126,31 @@ const TopProducts = () => {
           ) : (
             <Slider {...settings}>
               {products.map((product) => (
-                <div key={product.id} className=" !flex !justify-center  ">
+                <div key={product.id} className=" !flex !justify-center ">
                   <div
                     key={product.id}
                     className="!w-[270px]  h-[361px] shadow-xl shadow-slate-100 mb-[1px] hover:bg-primary-dark1 group cursor-pointer hover:translate-y-[-10px] transition-transform duration-300"
                   >
                     <div className="h-full flex flex-col justify-between group-hover:translate-y-[-10px] transition-transform duration-300 relative">
                       <div className="w-[275px] h-[240px] flex justify-center items-center bg-[#f6f7fb]">
-                        <div className="hidden  hover:flex absolute top-0 left-2 gap-2 mt-8"></div>
-                        <div className="mb-4 ">
+                        {/* Product image */}
+                        <div className="mb-4 relative">
                           <img
                             className="w-[178px] h-[178px]"
                             src={product.images[0]}
                             alt={product.title}
                           />
+                          {/* Add to cart button */}
+                          <button
+                            className="bg-primary-light text-white text-[12px]  px-4 h-[29px]  bg-[#08D15F]  flex justify-center items-center absolute right-11 hover:bg-[#FB4997]  "
+                            onClick={() => handleAddToCart(product)}
+                          >
+                            Add to Cart
+                          </button>
                         </div>
                       </div>
-                      <div className="p-4 flex flex-col items-center gap-2 group-hover:text-[#fff]">
+                      <div className="p-4 flex flex-col items-center gap-2 group-hover:text-[#fff] h-[125px] ">
+                        {/* Product title, category, and price */}
                         <div className="text-center text-secondary font-[Lato] font-bold text-[18px] group-hover:text-[#fff]">
                           {product.title}
                         </div>
@@ -152,7 +168,6 @@ const TopProducts = () => {
             </Slider>
           )}
         </div>
-        {/* ...................... */}
 
         <div className="w-full flex flex-col justify-center items-center mt-[100px] sm:mt-[60px] mb-[60px]">
           <div className="mb-[58px] flex flex-col items-center w-full ">
@@ -177,19 +192,25 @@ const TopProducts = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4  container cursor-pointer">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 container cursor-pointer">
             {productsGrid.map((productGrid) => (
               <div key={productGrid.id} className="flex gap-3">
-                <div className="bg-white shadow-lg w-[360px] h-[301px]  ">
+                <div className="bg-white shadow-lg w-[360px] h-[301px] hover:shadow-xl">
                   <div className="flex justify-center">
                     <img
                       className="h-[229px] w-[223px]"
                       src={productGrid.images[0]}
                       alt={productGrid.title}
                     />
+                    <button
+                      className="bg-primary-light text-white text-[12px]  px-4 h-[29px]  bg-[#08D15F]  flex justify-center items-center  hover:bg-[#FB4997] "
+                      onClick={() => handleAddToCart(productGrid)}
+                    >
+                      Add to Cart
+                    </button>
                   </div>
-                  <div className="flex justify-between pt-1 px-2 text-base text-[#151875] mt-6">
-                    <p class="border-b-2 border-[#eeeffb]">
+                  <div className="flex justify-between pt-1 px-2 text-base text-[#151875] mt-6 hover:text-[#FB4997] ">
+                    <p className="border-b-2 border-[#eeeffb]">
                       {productGrid.title}
                     </p>
                     <div className="">
@@ -249,7 +270,6 @@ const TopProducts = () => {
                 purus gravida.
               </p>
             </div>
-            
           </div>
         </div>
         {/* .......... */}
